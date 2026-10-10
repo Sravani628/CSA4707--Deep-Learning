@@ -1,0 +1,41 @@
+import numpy as np
+
+X = np.array([
+    [0, 0],
+    [0, 1],
+    [1, 0],
+    [1, 1]
+])
+
+y = np.array([[0], [1], [1], [0]])
+
+np.random.seed(1)
+
+W1 = np.random.randn(2, 4)
+W2 = np.random.randn(4, 1)
+
+lr = 0.5
+
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+
+for epoch in range(5000):
+
+    # Forward propagation
+    hidden = sigmoid(X @ W1)
+    output = sigmoid(hidden @ W2)
+
+    # Error
+    error = y - output
+
+    # Backpropagation
+    d_output = error * output * (1 - output)
+
+    d_hidden = d_output @ W2.T
+    d_hidden = d_hidden * hidden * (1 - hidden)
+
+    W2 += hidden.T @ d_output * lr
+    W1 += X.T @ d_hidden * lr
+
+print("Predictions:")
+print(np.round(output))
