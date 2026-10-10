@@ -1,0 +1,20 @@
+import numpy as np
+from scipy.stats import entropy
+
+P = np.array([0.7, 0.3])
+Q = np.array([0.6, 0.4])
+
+# Entropy
+H = entropy(P, base=2)
+
+print("Entropy:", H)
+
+# Cross Entropy
+cross_entropy = -np.sum(P * np.log(Q))
+
+print("Cross Entropy:", cross_entropy)
+
+# KL Divergence
+kl = entropy(P, Q)
+
+print("KL Divergence:", kl)
