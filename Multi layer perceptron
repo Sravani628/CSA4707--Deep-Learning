@@ -1,0 +1,14 @@
+import matplotlib.pyplot as plt
+
+predictions = model.predict(X, verbose=0).flatten()
+
+plt.bar(range(4), predictions)
+plt.axhline(0.5, linestyle="--", label="Decision threshold")
+plt.xticks(range(4), ["00", "01", "10", "11"])
+plt.xlabel("Input")
+plt.ylabel("Predicted probability")
+plt.title("MLP: XOR Prediction")
+plt.legend()
+plt.show()
+
+print("Predicted classes:", (predictions >= 0.5).astype(int))
