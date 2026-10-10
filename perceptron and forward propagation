@@ -1,0 +1,22 @@
+import numpy as np
+
+# Inputs
+X = np.array([
+    [0, 0],
+    [0, 1],
+    [1, 0],
+    [1, 1]
+])
+
+# Weights
+weights = np.array([1, 1])
+
+bias = -1
+
+# Step activation function
+def step(x):
+    return 1 if x >= 0 else 0
+
+for x in X:
+    output = step(np.dot(x, weights) + bias)
+    print(x, "->", output)
