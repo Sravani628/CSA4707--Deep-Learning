@@ -1,0 +1,32 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+data = np.array([
+    [2, 3],
+    [3, 4],
+    [4, 5],
+    [5, 6],
+    [6, 7]
+])
+
+# Covariance matrix
+cov_matrix = np.cov(data.T)
+
+print("Covariance Matrix:")
+print(cov_matrix)
+
+# Eigenvalues and eigenvectors
+values, vectors = np.linalg.eig(cov_matrix)
+
+print("\nEigenvalues:")
+print(values)
+
+print("\nEigenvectors:")
+print(vectors)
+
+# Visualization
+plt.scatter(data[:, 0], data[:, 1])
+plt.xlabel("X")
+plt.ylabel("Y")
+plt.title("Data Distribution")
+plt.show()
