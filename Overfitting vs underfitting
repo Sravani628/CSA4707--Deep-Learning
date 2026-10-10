@@ -1,0 +1,33 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LinearRegression
+
+X = np.linspace(0, 10, 20)
+y = np.sin(X)
+
+X = X.reshape(-1, 1)
+
+# Underfitting
+poly1 = PolynomialFeatures(degree=1)
+X1 = poly1.fit_transform(X)
+
+model1 = LinearRegression()
+model1.fit(X1, y)
+
+# Overfitting
+poly10 = PolynomialFeatures(degree=10)
+X10 = poly10.fit_transform(X)
+
+model10 = LinearRegression()
+model10.fit(X10, y)
+
+plt.scatter(X, y, label="Data")
+
+plt.plot(X, model1.predict(X1), label="Underfitting")
+
+plt.plot(X, model10.predict(X10), label="Overfitting")
+
+plt.legend()
+plt.title("Underfitting vs Overfitting")
+plt.show()
