@@ -1,0 +1,23 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import norm
+
+# Normal distribution
+x = np.linspace(-4, 4, 100)
+
+y = norm.pdf(x, 0, 1)
+
+plt.plot(x, y)
+plt.title("Normal Probability Distribution")
+plt.xlabel("X")
+plt.ylabel("Probability")
+plt.show()
+
+# Bayes theorem
+P_A = 0.3
+P_B_given_A = 0.8
+P_B = 0.5
+
+P_A_given_B = (P_B_given_A * P_A) / P_B
+
+print("P(A|B) =", P_A_given_B)
