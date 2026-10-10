@@ -1,0 +1,21 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Function: y = x²
+x = 5
+learning_rate = 0.1
+
+values = []
+
+for i in range(50):
+    gradient = 2 * x
+    x = x - learning_rate * gradient
+    values.append(x)
+
+print("Minimum value of x:", x)
+
+plt.plot(values)
+plt.xlabel("Iterations")
+plt.ylabel("x")
+plt.title("Gradient Descent")
+plt.show()
